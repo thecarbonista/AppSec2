@@ -6,12 +6,12 @@ from .models import User
 
 
 class RegistrationForm(FlaskForm):
-    username = StringField('Username',
+    username = StringField('uname',
                            validators=[DataRequired(), Length(min=2, max=20)])
-    password = PasswordField('Password', validators=[DataRequired()])
+    password = PasswordField('pword', validators=[DataRequired()])
     confirm_password = PasswordField('Confirm Password',
-                                     validators=[DataRequired(), EqualTo('password')])
-    twofactor = StringField('Two Factor', validators=[DataRequired(), Length(10)])
+                                     validators=[DataRequired(), EqualTo('pword')])
+    twofactor = StringField('2fa', validators=[DataRequired(), Length(10)])
     submit = SubmitField('Sign Up')
 
     def validate_username(self, username):
@@ -21,10 +21,10 @@ class RegistrationForm(FlaskForm):
 
 
 class LoginForm(FlaskForm):
-    username = StringField('Username',
+    username = StringField('uname',
                            validators=[DataRequired(), Length(min=2, max=20)])
-    password = PasswordField('Password', validators=[DataRequired()])
-    twofactor = StringField('Two Factor', validators=[DataRequired(), Length(10)])
+    password = PasswordField('pword', validators=[DataRequired()])
+    twofactor = StringField('2fa', validators=[DataRequired(), Length(10)])
     remember = BooleanField('Remember Me')
     submit = SubmitField('Login')
 
